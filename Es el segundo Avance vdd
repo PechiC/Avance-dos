@@ -22,7 +22,7 @@ int main()
 	empresa compras[3];
 	int opcion, busqueda;
 
-
+        do
 	{
 		printf("\t *-*-*-*-*-Bisonte GameStore-*-*-*-*-* \n\n");
 		printf(" Que accion desea realizar? \n\n");
