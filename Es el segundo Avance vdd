@@ -47,7 +47,7 @@ int main()
 				} while (compras[i].numoc == compras[i - 1].numoc || compras[i].numoc == compras[i - 2].numoc);
 
 
-				//proveedor 
+			
 
 				printf("Ingrese el Nombre del Videojuego \n");
 				cin.ignore();
