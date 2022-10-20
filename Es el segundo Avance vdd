@@ -1,0 +1,191 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+#include <string>
+#include <stdio.h>
+
+
+using namespace std;
+
+struct empresa
+{
+	//variables
+
+	int idcontrato, numoc, Nuart , op;
+	string proveedor, Noart, Dart, Categoria;
+	float subtotal, iva, total,Pjuegob, Pjuegof;
+};
+
+
+int main()
+{
+	empresa compras[3];
+	int opcion, busqueda;
+
+
+	{
+		printf("\t *-*-*-*-*-Bisonte GameStore-*-*-*-*-* \n\n");
+		printf(" Que accion desea realizar? \n\n");
+
+		printf(" 1.-Agregar un Articulo \n 2.-Modificar un Articulo \n 3.-Eliminar un Articulo \n 4.-Ver Lista de Articulos \n 5.-Limpiar \n 6.-Salir \n\n");
+		scanf_s("%d", &opcion);
+
+		switch (opcion)
+		{
+		case 1:
+			//capturar y guardar los datos por posicion pide los 3 que estan en la rubrica
+			for (int i = 0; i < 3; i++)
+			{
+				compras[i].idcontrato = 20220000 + i;
+				printf("ID CONTRATO: %d \n", compras[i].idcontrato);
+				int salida = 1;
+			
+				do
+				{
+					printf("ingrese el Numero Orden de Compra \n");
+					scanf_s("%d", &compras[i].numoc);
+				} while (compras[i].numoc == compras[i - 1].numoc || compras[i].numoc == compras[i - 2].numoc);
+
+
+				//proveedor 
+
+				printf("Ingrese el Nombre del Videojuego \n");
+				cin.ignore();
+				getline(cin , compras[i].Noart);
+
+				printf("Ingrese la Descripción del Articulo \n");
+				
+				getline(cin, compras[i].Dart);
+
+				printf("Ingrese la Categoria del VideoJuego \n");
+				
+				getline(cin, compras[i].Categoria);
+
+				printf("ingrese el Precio Base del Articulo \n");
+				scanf_s("%f", &compras[i].subtotal);
+				compras[i].iva = compras[i].subtotal * .16;
+				compras[i].total = compras[i].subtotal + compras[i].iva;
+				//compras[i].total =compras[i].subtotal*1.16;
+			}
+			break;
+
+		case 2: //lista
+			int opc2;
+			printf("1.- Buscar por Orden de Compra \n 2.-Ver Lista Completa \n");
+			scanf_s("%d", &opc2);
+			if (opc2 == 1)
+			{
+				printf("Ingrese el Numero de la Orden  \n");
+				scanf_s("%d", &busqueda);
+
+				//imprimir los datos por posicion 
+				for (int i = 0; i < 3; i++)
+				{
+					if (busqueda == compras[i].numoc)
+					{
+						printf("ID CONTRATO: %d \n", compras[i].idcontrato);
+						printf("Numero Orden de Compra: %d \n", compras[i].numoc);
+						//Datos del Articulo
+						printf("Nombre del VideoJuego %s \n", compras[i].Noart.c_str());
+						printf("Descripcion %s \n", compras[i].Dart.c_str());
+						printf("Categoria %s \n ", compras[i].Categoria.c_str());
+						printf("Precio Base: %f \n", compras[i].subtotal);
+						printf("iva: %f \n", compras[i].iva);
+						printf("total: %f \n", compras[i].total);
+					}
+				}
+			}
+			else
+			{
+				for (int i = 0; i < 3; i++)
+				{
+					if (compras[i].numoc != 0)
+					{
+						printf("ID CONTRATO: %d \n", compras[i].idcontrato);
+						printf("Numero Orden de Compra: %d \n", compras[i].numoc);
+						printf("Nombre del VideoJuego: %s \n", compras[i].Noart.c_str());
+						printf("Descripcion: %s \n", compras[i].Dart.c_str());
+						printf("Categoria: %s \n", compras[i].Categoria.c_str());
+						printf("Precio Base : %f \n", compras[i].subtotal);
+						printf("iva: %f \n", compras[i].iva);
+						printf("total: %f \n", compras[i].total);
+					}
+				}
+			}
+			break;
+
+		case 3:// no hara nada
+			printf("ingrese el Numero de Orden a Eliminar");
+			scanf_s("%d", &busqueda);
+
+			//imprimir los datos por posicion 
+			for (int i = 0; i < 3; i++)
+			{
+				if (busqueda == compras[i].numoc)
+				{
+					compras[i].numoc = 0;
+				}
+			}
+			break;
+
+		case 4:
+			int opc2;
+			printf("1.- Buscar por Orden de Compra \n 2.-Ver Lista Completa \n");
+			scanf_s("%d", &opc2);
+			if (opc2 == 1)
+			{
+				printf("Ingrese el Numero de la Orden  \n");
+				scanf_s("%d", &busqueda);
+
+				//imprimir los datos por posicion 
+				for (int i = 0; i < 3; i++)
+				{
+					if (busqueda == compras[i].numoc)
+					{
+						printf("ID CONTRATO: %d \n", compras[i].idcontrato);
+						printf("Numero Orden de Compra: %d \n", compras[i].numoc);
+						printf("Nombre del VideoJuego %s \n", compras[i].Noart.c_str());
+						printf("Descripcion %s \n", compras[i].Dart.c_str());
+						printf("Categoria %s \n ", compras[i].Categoria.c_str());
+						printf("Precio Base: %f \n", compras[i].subtotal);
+						printf("iva: %f \n", compras[i].iva);
+						printf("total: %f \n", compras[i].total);
+					}
+				}
+			}
+			else
+			{
+				for (int i = 0; i < 3; i++)
+				{
+					if (compras[i].numoc != 0)
+					{
+						printf("ID CONTRATO: %d \n", compras[i].idcontrato);
+						printf("Numero Orden de Compra: %d \n", compras[i].numoc);
+						printf("Nombre del VideoJuego: %s \n", compras[i].Noart.c_str());
+						printf("Descripcion: %s \n", compras[i].Dart.c_str());
+						printf("Categoria: %s \n", compras[i].Categoria.c_str());
+						printf("Precio Base : %f \n", compras[i].subtotal);
+						printf("iva: %f \n", compras[i].iva);
+						printf("total: %f \n", compras[i].total);
+					}
+				}
+			}
+			break;
+		case 5:
+			system("cls");
+			return main();
+			break;
+			
+		
+		case 6:
+			printf(" ok solo me usaste y ahora te vas ;:c hasta la proxima bye <3 \n");
+			break;
+
+		default:
+			printf("Opción Inexistente \n");
+			return main();
+			break;
+		}
+	} while (opcion != 6);
+	system("pause");
+}
